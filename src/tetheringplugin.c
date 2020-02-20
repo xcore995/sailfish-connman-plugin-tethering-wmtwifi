@@ -322,9 +322,10 @@ tethering_command(
 {
     gboolean ok = FALSE;
     int fd = open(CMD_DEV_NODE, O_RDWR | O_SYNC);
-
+    char zero='0'; 
+    write(fd, &zero, 1); //reset before changing state
     if (fd >= 0) {
-        ssize_t written = write(fd, &cmd, 1);
+         written = write(fd, &cmd, 1);
 
         if (written == 1) {
             ok = TRUE;
