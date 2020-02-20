@@ -325,7 +325,7 @@ tethering_command(
     char zero='0'; 
     write(fd, &zero, 1); //reset before changing state
     if (fd >= 0) {
-         written = write(fd, &cmd, 1);
+         ssize_t written = write(fd, &cmd, 1);
 
         if (written == 1) {
             ok = TRUE;
